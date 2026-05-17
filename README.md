@@ -150,21 +150,6 @@ Notes:
 - If the sentence dataset does not already exist, the launcher will build it automatically.
 - The default localization mode is `--method adaptive --mode prefix`.
 
-## End-to-End Shortcut
-
-If you want to run mining first and then localization in one go:
-
-```bash
-bash shell_scripts/run_commitment_pipeline.sh \
-  --model_name deepseek-ai/DeepSeek-R1-Distill-Qwen-7B \
-  --miner_gpu 7 \
-  --localization_gpus "4 5 6 7"
-```
-
-This runs:
-
-1. `run_commitment_miner_single_gpu.sh`
-2. `run_sentence_localization_multi_gpu.sh`
 
 ## Streamlit Dashboard
 
