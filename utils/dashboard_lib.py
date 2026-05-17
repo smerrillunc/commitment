@@ -17,7 +17,7 @@ except Exception:
 from sentence_pipeline import split_sentence_spans
 
 
-DEFAULT_LOCALIZATION_ROOT = "/playpen-ssd/smerrill/commitment/results/localization"
+DEFAULT_LOCALIZATION_ROOT = str(Path(__file__).resolve().parents[1] / "results" / "localization")
 DEFAULT_SCAN_LIMIT = 500
 
 

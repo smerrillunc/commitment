@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-PYTHON_BIN="${PYTHON_BIN:-/playpen-ssd/smerrill/conda_envs/deception/bin/python}"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 COMMITMENT_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+source "$SCRIPT_DIR/_env.sh"
+PYTHON_BIN="$(resolve_commitment_python_or_die)"
 RESULTS_ROOT="${RESULTS_ROOT:-$COMMITMENT_ROOT/results}"
 
 MODEL_NAME=""
@@ -254,6 +255,7 @@ echo "Sentence dataset dir: $SENTENCE_DATASET_DIR"
 echo "Localization dir: $LOCALIZATION_DIR"
 echo "GPUs: ${GPU_IDS_ARRAY[*]}"
 echo "Run tag: $RUN_TAG"
+print_commitment_env_notice
 
 pids=()
 pid_gpus=()

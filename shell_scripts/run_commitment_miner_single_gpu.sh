@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-PYTHON_BIN="${PYTHON_BIN:-/playpen-ssd/smerrill/conda_envs/deception/bin/python}"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 COMMITMENT_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+source "$SCRIPT_DIR/_env.sh"
+PYTHON_BIN="$(resolve_commitment_python_or_die)"
 RESULTS_ROOT="${RESULTS_ROOT:-$COMMITMENT_ROOT/results}"
 
 MODEL_NAME=""
@@ -213,6 +214,7 @@ fi
 
 echo "Model: $MODEL_NAME"
 echo "Output dir: $OUTPUT_DIR"
+print_commitment_env_notice
 if [[ -n "${CUDA_VISIBLE_DEVICES:-}" ]]; then
   echo "CUDA_VISIBLE_DEVICES: $CUDA_VISIBLE_DEVICES"
 fi
